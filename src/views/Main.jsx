@@ -1,9 +1,10 @@
 import React from 'react'
+import Tasks from './Tasks'
 
 const Main = () => {
   return (
     <div>
-      this is the main
+      <Tasks />
     </div>
   )
 }
