@@ -33,6 +33,7 @@ const Pokemons = () => {
   return (
     <div className="container">
       <h3>Pokemons list</h3>
+      <p> This is a protected route so you can only access here if you are logged in and google returns the ok</p>
       <div className="row">
         <div className="col-md-8">
           <nav aria-label="Page navigation example">

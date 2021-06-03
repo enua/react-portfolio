@@ -18,6 +18,7 @@ const Posts = () => {
   return (
     <div className="container mt-5">
       <h3>Posts</h3>
+      <p> This is a protected route so you can only access here if you are logged in and google returns the ok</p>
       <div class="list-group">
         {
           posts.length ?
