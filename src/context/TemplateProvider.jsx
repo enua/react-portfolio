@@ -5,7 +5,7 @@ export const TemplateContext = React.createContext()
 const TemplateProvider = (props) => {
   
   const templateStart = {
-    color: 'red',
+    color: 'white',
     backgroundColor: 'blue',
   }
 

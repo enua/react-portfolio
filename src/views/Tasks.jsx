@@ -57,7 +57,7 @@ const Tasks = () => {
 
   return (
     <div className="container mt-5">
-      <h1 className="text-center" > Task CRUD </h1>
+      <h1 className="text-center" style={{ backgroundColor: template.color}}> Task CRUD </h1>
       <p>{template.color.toString()}</p>
       <hr />
         <div className="row">
