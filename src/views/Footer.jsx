@@ -2,11 +2,12 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-bottom">
-      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span className="navbar-toggler-icon"></span>
-      </button>
-
+    <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-bottom justify-content-end">
+      <ul className="nav mx-5">
+      <li className="nav-item">
+        <button className="btn btn-outline-dark" disabled>React menu</button>
+      </li>
+      </ul>
     </nav>
   )
 }

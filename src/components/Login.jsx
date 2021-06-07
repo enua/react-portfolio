@@ -13,7 +13,7 @@ const Login = (props) => {
     if(userActive) {
       props.history.push('/')
     }
-  }, [userActive])
+  }, [userActive, props])
   return (
     <div className="mt-5 text-center">
       <h3>Login with Google</h3>

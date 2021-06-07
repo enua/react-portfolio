@@ -1,6 +1,6 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import { fetchOnePost, fetchPosts } from '../services/posts'
+import { fetchOnePost } from '../services/posts'
 
 const Post = () => {
   const { id } = useParams()
@@ -21,11 +21,11 @@ const Post = () => {
       {
         post ?
         (
-          <ul class="list-group">
-            <li class="list-group-item"><strong>post id:</strong> {post.id}</li>
-            <li class="list-group-item"><strong>user id:</strong> {post.userId}</li>
-            <li class="list-group-item"><strong>title:</strong> {post.title}</li>
-            <li class="list-group-item"><strong>content:</strong> {post.body}</li>
+          <ul className="list-group">
+            <li className="list-group-item"><strong>post id:</strong> {post.id}</li>
+            <li className="list-group-item"><strong>user id:</strong> {post.userId}</li>
+            <li className="list-group-item"><strong>title:</strong> {post.title}</li>
+            <li className="list-group-item"><strong>content:</strong> {post.body}</li>
           </ul>
         ) :
         'loading'   

@@ -1,7 +1,10 @@
 import React from 'react'
 import shortid from 'shortid'
+import { TemplateContext } from '../context/TemplateProvider'
 
 const Tasks = () => {
+
+  const { template } = React.useContext(TemplateContext)
 
   const [task, setTask] = React.useState('')
 
@@ -54,7 +57,8 @@ const Tasks = () => {
 
   return (
     <div className="container mt-5">
-      <h1 className="text-center"> Task CRUD </h1>
+      <h1 className="text-center" > Task CRUD </h1>
+      <p>{template.color.toString()}</p>
       <hr />
         <div className="row">
           <div className="col-8">
