@@ -9,13 +9,6 @@ const Pokemons = () => {
   const pokemons = useSelector(store => store.pokemons.results)
   const next = useSelector(store => store.pokemons.next)
   const prev = useSelector(store => store.pokemons.previous)
-  const [selected, setSelected] = React.useState({})
-
-  //app
-  const selectedPokemon = (url) => {
-    setSelected(pokemons[url])
-    console.log('url loaded')
-  }
 
   const isDisabled = (value) => {
     switch(value){
@@ -31,11 +24,24 @@ const Pokemons = () => {
   }
 
   return (
-    <div className="container">
+    <div className="container mt-2">
       <h3>Pokemons list</h3>
+      <p> This is a protected route so you can only access here if you are logged in and google returns the ok</p>
       <div className="row">
         <div className="col-md-8">
-          <nav aria-label="Page navigation example">
+          
+          <div className="list-group mb-3">
+            {
+              pokemons.map((pokemon, index) => (
+                <button
+                  key={index}
+                  className="list-group-item list-group-item-action"
+                  onClick={() => dispatch(getOnePokemonAction(pokemon.url))}
+                > { pokemon.name } </button>
+              ))
+            }
+          </div>
+          <nav aria-label="Page navigation example mt-3">
             <ul className="pagination">
               <li className="page-item">
                 <button
@@ -60,21 +66,10 @@ const Pokemons = () => {
               </li>
             </ul>
           </nav>
-          <div className="list-group mt-5">
-            {
-              pokemons.map((pokemon, index) => (
-                <button
-                  key={index}
-                  className="list-group-item list-group-item-action"
-                  onClick={() => dispatch(getOnePokemonAction(pokemon.url))}
-                > { pokemon.name } </button>
-              ))
-            }
-          </div>
         </div>
 
         <div className="col-md-4">
-          <Pokemon pokemon={ selected }/>
+          <Pokemon />
         </div>
       </div>
     </div>
