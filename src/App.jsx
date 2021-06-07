@@ -16,6 +16,9 @@ import Events from './components/Events'
 import AboutUs from './views/AboutUs'
 import Pokemons from './views/Pokemons'
 import Login from './components/Login'
+import TemplateBox from './components/TemplateBox';
+
+import TemplateProvider from './context/TemplateProvider'
 
 
   /**
@@ -29,7 +32,7 @@ import Login from './components/Login'
 function App() {
 
   /* AUTH CHECK BY FIREBASE */
-  const [firebaseUser, setFirebaseUser] = React.useState(null) //TODO: should be null?
+  const [firebaseUser, setFirebaseUser] = React.useState(false)
 
   React.useEffect(() => {
     const fetchUser = () => {
@@ -47,7 +50,7 @@ function App() {
   const PrivedRoute = ({component, path, ...rest}) => {
     if (localStorage.getItem('user')) {
       const userStorage = JSON.parse(localStorage.getItem('user'))
-      if (userStorage.uid === firebaseUser.uid) {
+      if (userStorage && (userStorage.uid === firebaseUser.uid)) {
         return <Route component={component} path={path} rest={rest} />
       } else {
         return redirectToLogin({component, path, ...rest})
@@ -65,17 +68,22 @@ function App() {
       <Router>
         <Header />
         <Switch>
-            <Route path="/tasks" component={Tasks} />
-            <Route path="/events" component={Events} />
-            <Route path="/about-us" component={AboutUs} />
-            <Route path="/posts/:id" component={Post} />
-            <PrivedRoute path="/posts" component={Posts} />
-            <PrivedRoute path="/pokemons" component={Pokemons} />
-            <Route path="/login" component={Login} />
-            <Route path="/" exact>
-              Home
-            </Route>            
-          </Switch>        
+          <Route path="/tasks" >
+          <TemplateProvider>
+              <TemplateBox />
+              <Tasks />
+          </TemplateProvider>
+          </Route>
+          <Route path="/events" component={Events} />
+          <Route path="/about-us" component={AboutUs} />
+          <Route path="/posts/:id" component={Post} />
+          <PrivedRoute path="/posts" component={Posts} />
+          <PrivedRoute path="/pokemons" component={Pokemons} />
+          <Route path="/login" component={Login} />
+          <Route path="/" exact>
+            Home
+          </Route>            
+        </Switch>        
         <Footer />
       </Router>
     </div>
